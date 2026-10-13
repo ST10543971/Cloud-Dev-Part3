@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="5317fd5b-84f3-493c-abb6-7810c68950e2" name="Student@LabVM2047582 2026-10-13 21:03:10" runUser="LabVM2047582\Student" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T21:03:10.6401040+02:00" queuing="2026-10-13T21:03:10.6401045+02:00" start="2026-10-13T21:03:08.0210622+02:00" finish="2026-10-13T21:03:10.9173521+02:00" />
+  <TestSettings name="default" id="46217abb-eadb-45e5-bd0f-aa7ac2ef20f3">
+    <Deployment runDeploymentRoot="Student_LabVM2047582_2026-10-13_21_03_10" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="89977e30-1ba9-4f2f-9237-5b711f0acaae" testId="54a00d07-a52e-ddc0-9cdb-175428cff81a" testName="TechMove.Tests.PdfTests.CreateContract_WithPdfFile_SavesAndRedirects" computerName="LabVM2047582" duration="00:00:01.1995007" startTime="2026-10-13T21:03:09.5796263+02:00" endTime="2026-10-13T21:03:10.7788006+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="89977e30-1ba9-4f2f-9237-5b711f0acaae" />
+    <UnitTestResult executionId="60b5620f-ba2e-497a-86db-984de55b8091" testId="2dfe0c8a-0bf6-f0a3-62b9-38fcdebc50b2" testName="TechMove.Tests.CurrencyTests.CurrencyCalculation_ReturnsCorrectValue" computerName="LabVM2047582" duration="00:00:00.0127443" startTime="2026-10-13T21:03:09.5766746+02:00" endTime="2026-10-13T21:03:09.5975599+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60b5620f-ba2e-497a-86db-984de55b8091" />
+    <UnitTestResult executionId="15b644c1-dc71-48e5-8526-f33db673dc4a" testId="e02abea2-544e-c1d5-4103-0a12c52843fe" testName="TechMove.Tests.WorkflowTests.ExpiredContractCannotCreateRequest" computerName="LabVM2047582" duration="00:00:00.0050567" startTime="2026-10-13T21:03:09.6334036+02:00" endTime="2026-10-13T21:03:09.6336324+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="15b644c1-dc71-48e5-8526-f33db673dc4a" />
+    <UnitTestResult executionId="4cbb0553-55fd-4768-8945-c2272dff5f78" testId="cd921ac5-dc74-1d90-852f-b0db8f18a98f" testName="TechMove.Tests.PdfTests.CreateContract_WithNonPdfFile_AddsModelError" computerName="LabVM2047582" duration="00:00:00.0241299" startTime="2026-10-13T21:03:10.7795361+02:00" endTime="2026-10-13T21:03:10.8030976+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4cbb0553-55fd-4768-8945-c2272dff5f78" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TechMove.Tests.PdfTests.CreateContract_WithPdfFile_SavesAndRedirects" storage="c:\users\student\techmove\techmove.tests\bin\debug\net10.0\techmove.tests.dll" id="54a00d07-a52e-ddc0-9cdb-175428cff81a">
+      <Execution id="89977e30-1ba9-4f2f-9237-5b711f0acaae" />
+      <TestMethod codeBase="C:\Users\Student\TechMove\TechMove.Tests\bin\Debug\net10.0\TechMove.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="TechMove.Tests.PdfTests" name="CreateContract_WithPdfFile_SavesAndRedirects" />
+    </UnitTest>
+    <UnitTest name="TechMove.Tests.CurrencyTests.CurrencyCalculation_ReturnsCorrectValue" storage="c:\users\student\techmove\techmove.tests\bin\debug\net10.0\techmove.tests.dll" id="2dfe0c8a-0bf6-f0a3-62b9-38fcdebc50b2">
+      <Execution id="60b5620f-ba2e-497a-86db-984de55b8091" />
+      <TestMethod codeBase="C:\Users\Student\TechMove\TechMove.Tests\bin\Debug\net10.0\TechMove.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="TechMove.Tests.CurrencyTests" name="CurrencyCalculation_ReturnsCorrectValue" />
+    </UnitTest>
+    <UnitTest name="TechMove.Tests.PdfTests.CreateContract_WithNonPdfFile_AddsModelError" storage="c:\users\student\techmove\techmove.tests\bin\debug\net10.0\techmove.tests.dll" id="cd921ac5-dc74-1d90-852f-b0db8f18a98f">
+      <Execution id="4cbb0553-55fd-4768-8945-c2272dff5f78" />
+      <TestMethod codeBase="C:\Users\Student\TechMove\TechMove.Tests\bin\Debug\net10.0\TechMove.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="TechMove.Tests.PdfTests" name="CreateContract_WithNonPdfFile_AddsModelError" />
+    </UnitTest>
+    <UnitTest name="TechMove.Tests.WorkflowTests.ExpiredContractCannotCreateRequest" storage="c:\users\student\techmove\techmove.tests\bin\debug\net10.0\techmove.tests.dll" id="e02abea2-544e-c1d5-4103-0a12c52843fe">
+      <Execution id="15b644c1-dc71-48e5-8526-f33db673dc4a" />
+      <TestMethod codeBase="C:\Users\Student\TechMove\TechMove.Tests\bin\Debug\net10.0\TechMove.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="TechMove.Tests.WorkflowTests" name="ExpiredContractCannotCreateRequest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="54a00d07-a52e-ddc0-9cdb-175428cff81a" executionId="89977e30-1ba9-4f2f-9237-5b711f0acaae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2dfe0c8a-0bf6-f0a3-62b9-38fcdebc50b2" executionId="60b5620f-ba2e-497a-86db-984de55b8091" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e02abea2-544e-c1d5-4103-0a12c52843fe" executionId="15b644c1-dc71-48e5-8526-f33db673dc4a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cd921ac5-dc74-1d90-852f-b0db8f18a98f" executionId="4cbb0553-55fd-4768-8945-c2272dff5f78" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v4.0.0+05679a7ab5 (64-bit .NET 10.0.12)&#xD;
+[xUnit.net 00:00:00.19]   Discovering: TechMove.Tests&#xD;
+[xUnit.net 00:00:00.26]   Discovered:  TechMove.Tests&#xD;
+[xUnit.net 00:00:00.32]   Starting:    TechMove.Tests&#xD;
+[xUnit.net 00:00:01.61]   Finished:    TechMove.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
