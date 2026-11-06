@@ -1,0 +1,105 @@
+@model Booking
+
+@{
+    ViewData["Title"] = "Create Booking";
+}
+
+<h1 class="h2 mb-3">Create Booking</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div id="validationSummary" asp-validation-summary="All" class="text-danger mb-3"></div>
+            <div id="conflictMessage" class="alert alert-danger d-none" role="alert" aria-live="assertive"></div>
+            <div class="mb-3">
+                <label asp-for="CustomerName" class="form-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="NumberOfTickets" class="form-label"></label>
+                <input asp-for="NumberOfTickets" class="form-control" />
+                <span asp-validation-for="NumberOfTickets" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="EventId" class="form-label"></label>
+                <select asp-for="EventId" class="form-select" asp-items="ViewBag.EventId"></select>
+                <span asp-validation-for="EventId" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-action="Index" class="btn btn-link">Back to list</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        (function () {
+            const eventSelect = document.querySelector('select[name="EventId"]');
+            const customerInput = document.querySelector('input[name="CustomerName"]');
+            const submitButton = document.querySelector('form button[type="submit"]');
+            const summary = document.getElementById('validationSummary');
+            const conflictMessage = document.getElementById('conflictMessage');
+
+            if (!eventSelect) return;
+
+            const form = eventSelect.closest('form');
+            let conflict = false;
+
+            async function checkConflict() {
+                const eventId = eventSelect.value;
+                if (!eventId) {
+                    // clear only conflict UI (keep server validation summary intact)
+                    conflictMessage.classList.add('d-none');
+                    conflictMessage.innerText = '';
+                    submitButton.disabled = false;
+                    conflict = false;
+                    return conflict;
+                }
+
+                try {
+                    const res = await fetch(`/Bookings/CheckEventConflict?eventId=${eventId}`);
+                    if (!res.ok) return false;
+                    const data = await res.json();
+                    if (data.conflict) {
+                        // show persistent conflict message separate from validation summary
+                        conflictMessage.classList.remove('d-none');
+                        conflictMessage.innerText = data.message;
+                        submitButton.disabled = true;
+                        conflict = true;
+                    } else {
+                        conflictMessage.classList.add('d-none');
+                        conflictMessage.innerText = '';
+                        submitButton.disabled = false;
+                        conflict = false;
+                    }
+                } catch (e) {
+                    console.error(e);
+                    conflict = false;
+                }
+
+                return conflict;
+            }
+
+           
+            if (form) {
+                form.addEventListener('submit', async function (e) {
+                  
+                    e.preventDefault();
+                    const isConflict = await checkConflict();
+                    if (!isConflict) {
+                       
+                        form.submit();
+                    } else {
+                        
+                        summary.focus();
+                    }
+                });
+            }
+
+            eventSelect.addEventListener('change', checkConflict);
+            document.addEventListener('DOMContentLoaded', checkConflict);
+        })();
+    </script>
+}

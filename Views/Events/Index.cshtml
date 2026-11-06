@@ -1,0 +1,39 @@
+@model IEnumerable<Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h2 mb-1">Events</h1>
+        <p class="text-muted mb-0">Track upcoming events and where they will take place.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Add Event</a>
+</div>
+
+<table class="table table-striped table-bordered align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.EventName)</th>
+            <th>@Html.DisplayNameFor(model => model.EventDate)</th>
+            <th>@Html.DisplayNameFor(model => model.Venue)</th>
+            <th class="text-end">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.EventName)</td>
+            <td>@item.EventDate.ToString("dd MMM yyyy")</td>
+            <td>@item.Venue?.Name</td>
+            <td class="text-end">
+                <a asp-action="Edit" asp-route-id="@item.EventId" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.EventId" class="btn btn-sm btn-outline-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.EventId" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

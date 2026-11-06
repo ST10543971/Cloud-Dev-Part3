@@ -1,0 +1,22 @@
+@model Booking
+
+@{
+    ViewData["Title"] = "Delete Booking";
+}
+
+<h1 class="h2 mb-3">Delete Booking</h1>
+<p class="text-danger">Confirm that you want to remove this booking.</p>
+<div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CustomerName)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerName)</dd>
+    <dt class="col-sm-3">Event</dt>
+    <dd class="col-sm-9">@Model.Event?.EventName</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="BookingId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-link">Back to list</a>
+</form>

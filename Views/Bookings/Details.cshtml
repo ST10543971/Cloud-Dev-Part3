@@ -1,0 +1,21 @@
+@model Booking
+
+@{
+    ViewData["Title"] = "Booking Details";
+}
+
+<h1 class="h2 mb-3">Booking Details</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CustomerName)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerName)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.NumberOfTickets)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.NumberOfTickets)</dd>
+    <dt class="col-sm-3">Event</dt>
+    <dd class="col-sm-9">@Model.Event?.EventName</dd>
+    <dt class="col-sm-3">Venue</dt>
+    <dd class="col-sm-9">@Model.Event?.Venue?.Name</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.BookingId" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-link">Back to list</a>

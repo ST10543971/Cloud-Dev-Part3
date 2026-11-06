@@ -1,0 +1,74 @@
+@model Venue
+
+@{
+    ViewData["Title"] = "Create Venue";
+}
+
+<h1 class="h2 mb-3">Create Venue</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Location" class="form-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Capacity" class="form-label"></label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="EventTypeId" class="form-label">Event Type</label>
+                <select asp-for="EventTypeId" class="form-select">
+                    <option value="">Select an event type</option>
+                    @foreach (var eventType in (IEnumerable<EventType>?)ViewBag.EventTypes ?? Enumerable.Empty<EventType>())
+                    {
+                        <option value="@eventType.EventTypeId">@eventType.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="EventTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-check mb-3">
+                <input asp-for="IsAvailable" class="form-check-input" />
+                <label asp-for="IsAvailable" class="form-check-label"></label>
+            </div>
+            <!-- image upload removed -->
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-action="Index" class="btn btn-link">Back to list</a>
+        </form>
+    </div>
+</div>Controllers/VenuesController.csControllers/VenuesController.cspublic IActionResult Create()
+{
+    return View();
+}public async Task<IActionResult> Create()
+{
+    await LoadEventTypesAsync();
+    return View();
+}dotnet ef migrations listdotnet ef migrations add AddFilterFeaturedotnet ef migrations add AddVenueFilterFields
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}Update-DatabaseTools
+→ NuGet Package Manager
+→ Package Manager ConsoleGet-MigrationGet-MigrationGet-MigrationRight-click VenueBookingApp
+→ Publish
+→ Azure
+→ Azure App Service
+→ Select your existing App Service
+→ PublishRight-click VenueBookingApp
+→ Publish
+→ Azure
+→ Azure App Service
+→ Select your existing App Service
+→ Publish/Venues/Createbookingappserver1.database.windows.netbookingappserver1free-sql-db-0769474Server: bookingappserver1.database.windows.netName: DatabaseProvider
+Value: SqlServerName: AzureSqlConnection
+Type: SQLAzure
+Value: [the ADO.NET connection string from the database]Allow Azure services and resources to access this serverMigrations\20261104150155_AddEventTypesAndVenueAvailability.cs

@@ -1,0 +1,38 @@
+@model Venue
+
+@{
+    ViewData["Title"] = "Venue Details";
+}
+
+<h1 class="h2 mb-3">Venue Details</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Location)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Location)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Capacity)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Capacity)</dd>
+</dl>
+
+<h2 class="h5 mt-4">Scheduled Events</h2>
+
+@if (Model.Events.Count == 0)
+{
+    <p class="text-muted">No events scheduled for this venue.</p>
+}
+else
+{
+    <ul class="list-group mb-3">
+        @foreach (var item in Model.Events.OrderBy(item => item.EventDate))
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>@item.EventName</span>
+                <span class="text-muted">@item.EventDate.ToString("dd MMM yyyy")</span>
+            </li>
+        }
+    </ul>
+}
+
+<a asp-action="Edit" asp-route-id="@Model.VenueId" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-link">Back to list</a>

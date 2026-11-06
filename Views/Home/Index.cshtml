@@ -1,0 +1,89 @@
+﻿@model VenueDashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <p class="text-muted text-uppercase small mb-2">Venues</p>
+                <h2 class="display-6 mb-0">@Model.VenueCount</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <p class="text-muted text-uppercase small mb-2">Events</p>
+                <h2 class="display-6 mb-0">@Model.EventCount</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <p class="text-muted text-uppercase small mb-2">Bookings</p>
+                <h2 class="display-6 mb-0">@Model.BookingCount</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="h5 mb-0">Upcoming Events</h3>
+                    <a asp-controller="Events" asp-action="Index" class="btn btn-sm btn-outline-primary">View all</a>
+                </div>
+
+                @if (Model.UpcomingEvents.Count == 0)
+                {
+                    <p class="text-muted mb-0">No events scheduled yet.</p>
+                }
+                else
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var item in Model.UpcomingEvents)
+                        {
+                            <div class="list-group-item px-0">
+                                <div class="fw-semibold">@item.EventName</div>
+                                <div class="text-muted small">@item.Venue?.Name · @item.EventDate.ToString("dd MMM yyyy")</div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="h5 mb-0">Recent Bookings</h3>
+                    <a asp-controller="Bookings" asp-action="Index" class="btn btn-sm btn-outline-primary">View all</a>
+                </div>
+
+                @if (Model.RecentBookings.Count == 0)
+                {
+                    <p class="text-muted mb-0">No bookings captured yet.</p>
+                }
+                else
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var item in Model.RecentBookings)
+                        {
+                            <div class="list-group-item px-0">
+                                <div class="fw-semibold">@item.CustomerName</div>
+                                <div class="text-muted small">@item.Event?.EventName · @item.NumberOfTickets ticket(s)</div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

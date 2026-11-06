@@ -1,0 +1,22 @@
+@model Venue
+
+@{
+    ViewData["Title"] = "Delete Venue";
+}
+
+<h1 class="h2 mb-3">Delete Venue</h1>
+<p class="text-danger">Deleting a venue with related events will fail until those events are removed or reassigned.</p>
+<div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Location)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Location)</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="VenueId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-link">Back to list</a>
+</form>
